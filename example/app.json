@@ -1,0 +1,22 @@
+{
+  "name": "react-native-awesome-carousel-example",
+  "displayName": "AwesomeCarousel Example",
+  "expo": {
+    "name": "react-native-awesome-carousel-example",
+    "slug": "react-native-awesome-carousel-example",
+    "description": "Example app for react-native-awesome-carousel",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
