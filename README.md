@@ -1,6 +1,8 @@
 # react-native-awesome-carousel
 
 Carousel for React Native. Built with react-native-pager-view.
+<br/>
+Better documentation should be lived in an individual website soon!
 
 ## Installation
 
