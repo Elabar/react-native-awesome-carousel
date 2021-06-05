@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { StyleSheet } from 'react-native';
 import PagerView, {
   PagerViewOnPageSelectedEvent,
   PageScrollStateChangedNativeEvent,
@@ -8,12 +9,14 @@ interface IAwesomeCarousel {
   children: JSX.Element[];
   loop?: boolean;
   autoplay?: boolean;
+  onSnap?: (index: number) => void;
 }
 
 const AwesomeCarousel = ({
   children = [],
   loop = true,
   autoplay = true,
+  onSnap,
 }: IAwesomeCarousel) => {
   const viewPagerRef = useRef<PagerView>(null);
   const [components, setComponents] = useState<JSX.Element[]>([]);
@@ -66,6 +69,18 @@ const AwesomeCarousel = ({
   }, [loop, children]);
 
   const _onPageSelected = (event: PagerViewOnPageSelectedEvent) => {
+    if (onSnap) {
+      if (children.length > 1 && loop) {
+        if (
+          event.nativeEvent.position !== components.length - 1 &&
+          event.nativeEvent.position !== 0
+        ) {
+          onSnap(event.nativeEvent.position - 1);
+        }
+      } else {
+        onSnap(event.nativeEvent.position);
+      }
+    }
     setCurrentPage(event.nativeEvent.position);
   };
 
@@ -81,7 +96,7 @@ const AwesomeCarousel = ({
   return (
     <PagerView
       ref={viewPagerRef}
-      style={{ flex: 1 }}
+      style={styles.pagerViewContainer}
       initialPage={currentPage}
       onPageScrollStateChanged={_onPageScrollStateChanged}
       onPageSelected={_onPageSelected}
@@ -90,5 +105,11 @@ const AwesomeCarousel = ({
     </PagerView>
   );
 };
+
+const styles = StyleSheet.create({
+  pagerViewContainer: {
+    flex: 1,
+  },
+});
 
 export default AwesomeCarousel;

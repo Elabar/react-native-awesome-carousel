@@ -13,12 +13,15 @@ import AwesomeCarousel from 'react-native-awesome-carousel';
 const { width } = Dimensions.get('window');
 const height = 100;
 export default function App() {
+  const [sampleOneIndex, setSampleOneIndex] = React.useState(0);
+  const [sampleTwoIndex, setSampleTwoIndex] = React.useState(0);
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar translucent={false} />
       <Text style={styles.title}>Normal Carousel</Text>
       <View style={styles.slideContainer}>
-        <AwesomeCarousel loop={false}>
+        <AwesomeCarousel loop={false} onSnap={setSampleOneIndex}>
           <View style={styles.slide1}>
             <Text>Normal Carousel</Text>
             <Text>Slide 1</Text>
@@ -28,11 +31,12 @@ export default function App() {
             <Text>Slide 2</Text>
           </View>
         </AwesomeCarousel>
+        <Text>{`current index: ${sampleOneIndex}`}</Text>
       </View>
 
       <Text style={styles.title}>Autoplay loop Carousel</Text>
       <View style={styles.slideContainer}>
-        <AwesomeCarousel autoplay={true} loop={true}>
+        <AwesomeCarousel autoplay={true} loop={true} onSnap={setSampleTwoIndex}>
           <View style={styles.slide1}>
             <Text>Normal Carousel</Text>
             <Text>Slide 1</Text>
@@ -42,6 +46,7 @@ export default function App() {
             <Text>Slide 2</Text>
           </View>
         </AwesomeCarousel>
+        <Text>{`current index: ${sampleTwoIndex}`}</Text>
       </View>
     </SafeAreaView>
   );
