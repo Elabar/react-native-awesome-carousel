@@ -1,6 +1,6 @@
 {
   "name": "react-native-awesome-carousel",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Carousel for React Native. Built with react-native-pager-view.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
