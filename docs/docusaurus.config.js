@@ -2,8 +2,8 @@
 module.exports = {
   title: 'My Site',
   tagline: 'Dinosaurs are cool',
-  url: 'https://elabar.github.io/react-native-awesome-carousel',
-  baseUrl: '/',
+  url: 'https://react-native-awesome-carousel.netlify.app',
+  baseUrl: '/docs/build/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
