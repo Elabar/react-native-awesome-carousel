@@ -10,6 +10,7 @@ interface IAwesomeCarousel {
   loop?: boolean;
   autoplay?: boolean;
   onSnap?: (index: number) => void;
+  autoplayInterval?: number;
 }
 
 const AwesomeCarousel = ({
@@ -17,6 +18,7 @@ const AwesomeCarousel = ({
   loop = true,
   autoplay = true,
   onSnap,
+  autoplayInterval = 2500,
 }: IAwesomeCarousel) => {
   const viewPagerRef = useRef<PagerView>(null);
   const [components, setComponents] = useState<JSX.Element[]>([]);
@@ -48,11 +50,11 @@ const AwesomeCarousel = ({
         if (viewPagerRef?.current) {
           viewPagerRef.current.setPage(currentPage + 1);
         }
-      }, 2500);
+      }, autoplayInterval);
 
       timeoutRef.current.push(currentTimeout);
     }
-  }, [viewPagerRef, currentPage, components, autoplay]);
+  }, [viewPagerRef, currentPage, components, autoplay, autoplayInterval]);
 
   useEffect(() => {
     if (children.length > 1 && loop) {

@@ -36,7 +36,12 @@ export default function App() {
 
       <Text style={styles.title}>Autoplay loop Carousel</Text>
       <View style={styles.slideContainer}>
-        <AwesomeCarousel autoplay={true} loop={true} onSnap={setSampleTwoIndex}>
+        <AwesomeCarousel
+          autoplay={true}
+          loop={true}
+          onSnap={setSampleTwoIndex}
+          autoplayInterval={500}
+        >
           <View style={styles.slide1}>
             <Text>Normal Carousel</Text>
             <Text>Slide 1</Text>
