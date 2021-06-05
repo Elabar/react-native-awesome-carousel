@@ -2,34 +2,28 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Motivation
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Let's talk about why another React Native carousel library.
 
-## Getting Started
+## Library left unmaintained
 
-Get started by **creating a new site**.
+According to my knowledge, there are two major library that is excellent in this carousel field, namely
+[react-native-snap-carousel](https://github.com/meliorence/react-native-snap-carousel) and [react-native-swiper](https://github.com/leecade/react-native-swiper). Leaving library unmaintained is usually not a real problem if the
+library itself is stable enough, like [ExpressJS](https://expressjs.com/). But upon my usage, both library did not
+meet my expectation and I will list down their problem here.
 
-Or **try Docusaurus immediately** with **[new.docusaurus.io](https://new.docusaurus.io)**.
+#### react-native-snap-carousel
 
-## Generate a new site
+- swiping the carousel will sometime hang in the middle of swipping, leaving the carousel showing two slides at once.
+- swiping is not as smooth
+- when loop is enabled, swiping from last slide to first slide will have a blink (beta 4)
 
-Generate a new Docusaurus site using the **classic template**:
+#### react-native-swiper
 
-```shell
-npx @docusaurus/init@latest init my-website classic
-```
+- It is using ScrollView for Android implementation. When `removeSubClipedViews` is enabled, sliding from last slide
+  to first slide will blink.
 
-## Start your site
+## Solution
 
-Run the development server:
-
-```shell
-cd my-website
-
-npx docusaurus start
-```
-
-Your site starts at `http://localhost:3000`.
-
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
+After trying two of the libraries, I have decided to write a whole new library that is based on [react-native-pager-view](https://github.com/callstack/react-native-pager-view). Under the hood, it is using [Android ViewPager](https://developer.android.com/reference/android/support/v4/view/ViewPager) and [iOS UIPageViewController](https://developer.apple.com/documentation/uikit/uipageviewcontroller). Personally, I think this approach should be more performant as it is using Native Component under the hood. This library ***does not*** try to be the next **react-native-snap-carousel** nor the **react-native-swiper**, I just built it for my own use case. But of course, I'm still open for any good suggestions!
