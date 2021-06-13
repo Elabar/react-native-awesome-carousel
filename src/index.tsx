@@ -18,6 +18,7 @@ interface IAwesomeCarousel {
   autoplay?: boolean;
   onSnap?: (index: number) => void;
   autoplayInterval?: number;
+  orientation?: 'horizontal' | 'vertical';
 }
 
 interface IAwesomeCarouselForward {
@@ -32,6 +33,7 @@ const AwesomeCarousel = forwardRef<IAwesomeCarouselForward, IAwesomeCarousel>(
       autoplay = true,
       onSnap,
       autoplayInterval = 2500,
+      orientation = 'horizontal',
     },
     ref
   ) => {
@@ -142,6 +144,8 @@ const AwesomeCarousel = forwardRef<IAwesomeCarouselForward, IAwesomeCarousel>(
         initialPage={currentPage}
         onPageScrollStateChanged={_onPageScrollStateChanged}
         onPageSelected={_onPageSelected}
+        orientation={orientation}
+        overdrag={false}
       >
         {components}
       </PagerView>

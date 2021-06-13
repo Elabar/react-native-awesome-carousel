@@ -93,6 +93,25 @@ export default function App() {
         </AwesomeCarousel>
         <Text>{`current index: ${sampleTwoIndex}`}</Text>
       </View>
+
+      <Text style={styles.title}>Vertical loop Carousel</Text>
+      <View style={styles.slideContainer}>
+        <AwesomeCarousel
+          autoplay={true}
+          loop={true}
+          autoplayInterval={2500}
+          orientation="vertical"
+        >
+          <View style={styles.slide1}>
+            <Text>Normal Carousel</Text>
+            <Text>Slide 1</Text>
+          </View>
+          <View style={styles.slide2}>
+            <Text>Normal Carousel</Text>
+            <Text>Slide 2</Text>
+          </View>
+        </AwesomeCarousel>
+      </View>
     </SafeAreaView>
   );
 }
