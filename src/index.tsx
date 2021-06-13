@@ -19,6 +19,7 @@ interface IAwesomeCarousel {
   onSnap?: (index: number) => void;
   autoplayInterval?: number;
   orientation?: 'horizontal' | 'vertical';
+  autoplayDirection?: 'increment' | 'decrement';
 }
 
 interface IAwesomeCarouselForward {
@@ -34,6 +35,7 @@ const AwesomeCarousel = forwardRef<IAwesomeCarouselForward, IAwesomeCarousel>(
       onSnap,
       autoplayInterval = 2500,
       orientation = 'horizontal',
+      autoplayDirection = 'increment',
     },
     ref
   ) => {
@@ -86,15 +88,25 @@ const AwesomeCarousel = forwardRef<IAwesomeCarouselForward, IAwesomeCarousel>(
         currentPage !== components.length - 1 &&
         autoplay
       ) {
+        const setTo =
+          autoplayDirection === 'increment' ? currentPage + 1 : currentPage - 1;
+
         const currentTimeout = setTimeout(() => {
           if (viewPagerRef?.current) {
-            viewPagerRef.current.setPage(currentPage + 1);
+            viewPagerRef.current.setPage(setTo);
           }
         }, autoplayInterval);
 
         timeoutRef.current.push(currentTimeout);
       }
-    }, [viewPagerRef, currentPage, components, autoplay, autoplayInterval]);
+    }, [
+      viewPagerRef,
+      currentPage,
+      components,
+      autoplay,
+      autoplayInterval,
+      autoplayDirection,
+    ]);
 
     useEffect(() => {
       if (children.length > 1 && loop) {
