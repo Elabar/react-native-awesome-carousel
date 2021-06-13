@@ -147,6 +147,6 @@
     ]
   },
   "dependencies": {
-    "react-native-pager-view": "^5.1.10"
+    "react-native-pager-view": "^5.2.1"
   }
 }
