@@ -30,6 +30,10 @@ module.exports = {
       style: 'dark',
       copyright: `Copyright © ${new Date().getFullYear()} Elabar. Built with Docusaurus.`,
     },
+    algolia: {
+      apiKey: '668768d030f5f9b77e947952d64b31a5',
+      indexName: 'react-native-awesome-carousel',
+    },
   },
   presets: [
     [
